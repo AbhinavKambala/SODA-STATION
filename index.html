@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SodaStation - Relive the Taste of Your Childhood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        company: {
+                            DEFAULT: 'rgb(16, 33, 105)',
+                            light: 'rgb(32, 66, 210)',
+                            dark: 'rgb(8, 16, 52)',
+                        },
+                        buttonHighlight: 'rgb(228, 200, 78)',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+        
+        .staatliches {
+            font-family: 'Staatliches', cursive;
+        }
+        
+        @keyframes pop1 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-650px) scale(1.1); opacity: 0.7; }
+        }
+        @keyframes pop2 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-700px) scale(1.05); opacity: 0.7; }
+        }
+        @keyframes pop3 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-670px) scale(1.15); opacity: 0.7; }
+        }
+        @keyframes pop4 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-690px) scale(1.08); opacity: 0.7; }
+        }
+        @keyframes pop5 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-660px) scale(1.12); opacity: 0.7; }
+        }
+        @keyframes pop6 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-680px) scale(1.09); opacity: 0.7; }
+        }
+        @keyframes pop7 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-675px) scale(1.13); opacity: 0.7; }
+        }
+        @keyframes pop8 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-700px) scale(1.1); opacity: 0.7; }
+        }
+        @keyframes pop9 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-670px) scale(1.05); opacity: 0.7; }
+        }
+        @keyframes pop10 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-690px) scale(1.15); opacity: 0.7; }
+        }
+        @keyframes pop11 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-660px) scale(1.08); opacity: 0.7; }
+        }
+        @keyframes pop12 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-680px) scale(1.12); opacity: 0.7; }
+        }
+        @keyframes pop13 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-675px) scale(1.09); opacity: 0.7; }
+        }
+        @keyframes pop14 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-690px) scale(1.13); opacity: 0.7; }
+        }
+        @keyframes pop15 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-710px) scale(1.12); opacity: 0.7; }
+        }
+        @keyframes pop16 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-690px) scale(1.08); opacity: 0.7; }
+        }
+        @keyframes pop17 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-720px) scale(1.15); opacity: 0.7; }
+        }
+        @keyframes pop18 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-700px) scale(1.09); opacity: 0.7; }
+        }
+        @keyframes pop19 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-680px) scale(1.13); opacity: 0.7; }
+        }
+        @keyframes pop20 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-715px) scale(1.11); opacity: 0.7; }
+        }
+        @keyframes pop21 {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-705px) scale(1.14); opacity: 0.7; }
+        }
+
+        .animate-pop1 { animation: pop1 4.5s linear infinite; animation-delay: 0s; }
+        .animate-pop2 { animation: pop2 2.0s linear infinite; animation-delay: 1s; }
+        .animate-pop3 { animation: pop3 4.2s linear infinite; animation-delay: 0.5s; }
+        .animate-pop4 { animation: pop4 2.1s linear infinite; animation-delay: 1.5s; }
+        .animate-pop5 { animation: pop5 4.0s linear infinite; animation-delay: 0.7s; }
+        .animate-pop6 { animation: pop6 4.8s linear infinite; animation-delay: 1.2s; }
+        .animate-pop7 { animation: pop7 2.2s linear infinite; animation-delay: 0.4s; }
+        .animate-pop8 { animation: pop8 1.8s linear infinite; animation-delay: 0.6s; }
+        .animate-pop9 { animation: pop9 2.3s linear infinite; animation-delay: 1.3s; }
+        .animate-pop10 { animation: pop10 1.9s linear infinite; animation-delay: 0.9s; }
+        .animate-pop11 { animation: pop11 2.4s linear infinite; animation-delay: 1.7s; }
+        .animate-pop12 { animation: pop12 1.7s linear infinite; animation-delay: 0.2s; }
+        .animate-pop13 { animation: pop13 4.3s linear infinite; animation-delay: 1.1s; }
+        .animate-pop14 { animation: pop14 2.0s linear infinite; animation-delay: 0.5s; }
+        .animate-pop15 { animation: pop15 2.3s linear infinite; animation-delay: 0.3s; }
+        .animate-pop16 { animation: pop16 1.8s linear infinite; animation-delay: 1.4s; }
+        .animate-pop17 { animation: pop17 2.5s linear infinite; animation-delay: 0.8s; }
+        .animate-pop18 { animation: pop18 2.1s linear infinite; animation-delay: 1.6s; }
+        .animate-pop19 { animation: pop19 1.9s linear infinite; animation-delay: 0.1s; }
+        .animate-pop20 { animation: pop20 2.2s linear infinite; animation-delay: 1.2s; }
+        .animate-pop21 { animation: pop21 1.8s linear infinite; animation-delay: 0.6s; }
+
+        .bubble {
+            animation-fill-mode: both;
+        }
+
+        /* Train animation */
+        @keyframes trainMove {
+            0% { transform: translateX(100vw) translateY(-50%); }
+            100% { transform: translateX(-400px) translateY(-50%); }
+        }
+
+        .train-animation {
+            animation: trainMove 6s linear infinite;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu {
+            display: block;
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            pointer-events: auto;
+        }
+
+        /* Hamburger animation */
+        .hamburger-open #hamburger-line1 {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-open #hamburger-line2 {
+            opacity: 0;
+        }
+
+        .hamburger-open #hamburger-line3 {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom CSS for train section */
+        @media (min-width: 1024px) {
+            #track-bg { 
+                bottom: 14px !important; 
+            }
+            
+            /* Move train up by 2% on laptop screens only */
+            #scrollingTrain {
+                top: 48% !important;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            section[style*='background-image'] {
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: #FFDA35 !important;
+            }
+        }
+        
+        /* Custom company colors */
+        .bg-company {
+            background-color: #102169;
+        }
+        
+        .text-company {
+            color: #102169;
+        }
+        
+        .bg-company-light {
+            background-color: #1a2b7a;
+        }
+        
+        .hover\:bg-company-light:hover {
+            background-color: #1a2b7a;
+        }
+        
+        .hover\:text-company-light:hover {
+            color: #1a2b7a;
+        }
+        
+        /* Ensure proper positioning */
+        .relative {
+            position: relative;
+        }
+        
+        .absolute {
+            position: absolute;
+        }
+        
+        .z-10 {
+            z-index: 10;
+        }
+        
+        .z-0 {
+            z-index: 0;
+        }
+        
+        /* Transform utilities */
+        .transform {
+            transform: translateZ(0);
+        }
+        
+        .-translate-y-1\/2 {
+            transform: translateY(-50%);
+        }
+        
+        /* Animation keyframes for smooth movement */
+        @keyframes trainMove {
+            from {
+                transform: translateX(100vw) translateY(-50%);
+            }
+            to {
+                transform: translateX(-100px) translateY(-50%);
+            }
+        }
+        
+        /* Fallback animation if GSAP fails */
+        .train-fallback {
+            animation: trainMove 6s linear infinite;
+        }
+
+        /* Custom styles for WhatsApp button */
+        .whatsapp-button {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-button:active {
+            transform: scale(0.95);
+        }
+        
+        /* Custom shadow */
+        .whatsapp-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Ensure proper z-index and positioning */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .whatsapp-fixed {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* Prevent text selection */
+        .whatsapp-button {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen text-gray-800 scroll-smooth w-full overflow-x-hidden">
+    <!-- Navigation Header -->
+    <nav id="header" class="fixed left-0 right-0 top-0 z-20 bg-company text-white shadow-sm h-16 flex items-center px-6 md:px-12 justify-between transition-transform duration-300">
+        <a href="#home" class="text-2xl font-extrabold text-white tracking-tight hover:text-white">
+            <span>SodaStation</span>
+        </a>
+        <div class="space-x-8 text-base hidden md:flex items-center">
+            <a href="#features" class="text-white hover:text-company-light transition">Features</a>
+            <a href="#about" class="text-white hover:text-company-light transition">About</a>
+            <a href="#contact" class="text-white hover:text-company-light transition">Contact</a>
+        </div>
+        <!-- Hamburger Icon for Mobile -->
+        <button
+            id="mobile-menu-btn"
+            class="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none bg-transparent hover:bg-white/10 rounded-lg transition-colors relative z-40"
+            aria-label="Toggle menu"
+        >
+            <span id="hamburger-line1" class="block w-7 h-1 bg-white mb-1 rounded transition-all duration-300"></span>
+            <span id="hamburger-line2" class="block w-7 h-1 bg-white mb-1 rounded transition-all duration-300"></span>
+            <span id="hamburger-line3" class="block w-7 h-1 bg-white rounded transition-all duration-300"></span>
+        </button>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-company shadow-lg flex flex-col space-y-4 text-base py-6 px-8 md:hidden z-30 mobile-menu transform -translate-y-full opacity-0 transition-all duration-300">
+            <a href="#features" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Features</a>
+            <a href="#about" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">About</a>
+            <a href="#contact" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="w-full bg-company flex flex-col items-center justify-center text-center min-h-[70vh] pt-32 pb-20 m-0 p-0 overflow-x-hidden relative mb-12">
+        <!-- Bubbles Animation Background - behind text -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+            <svg class="w-full h-full" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="bubble animate-pop1" cx="300" cy="600" r="18" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop2" cx="600" cy="620" r="14" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop3" cx="900" cy="610" r="16" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop4" cx="1200" cy="630" r="12" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop5" cx="400" cy="650" r="15" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop6" cx="800" cy="640" r="17" fill="rgb(16,33,105)" />
+                <circle class="bubble animate-pop7" cx="1100" cy="625" r="13" fill="rgb(16,33,105)" />
+            </svg>
+        </div>
+        <div class="w-full flex flex-col items-center m-0 p-0 py-12 relative z-10 px-4">
+            <div class="relative w-full max-w-4xl mx-auto">
+                <h1 class="staatliches text-5xl md:text-7xl lg:text-8xl font-normal mb-6 text-white leading-tight uppercase relative z-10">
+                    RELIVE THE TASTE OF YOUR CHILDHOOD<br />
+                    ONE GOLI AT A TIME
+                </h1>
+                <svg class="absolute inset-0 w-full h-full" style="z-index: 20; pointer-events: none; mix-blend-mode: normal; opacity: 1;" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="bubble animate-pop1" cx="300" cy="600" r="36" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop2" cx="600" cy="620" r="28" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop3" cx="900" cy="610" r="32" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop4" cx="1200" cy="630" r="24" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop5" cx="400" cy="650" r="30" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop6" cx="800" cy="640" r="34" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop7" cx="1100" cy="625" r="26" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop8" cx="200" cy="670" r="20" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop9" cx="500" cy="660" r="24" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop10" cx="750" cy="680" r="18" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop11" cx="1000" cy="670" r="22" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop12" cx="1300" cy="690" r="16" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop13" cx="350" cy="690" r="26" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop14" cx="1150" cy="660" r="20" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop15" cx="250" cy="680" r="22" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop16" cx="1450" cy="690" r="19" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop17" cx="100" cy="700" r="25" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop18" cx="1350" cy="670" r="21" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop19" cx="1250" cy="660" r="17" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop20" cx="950" cy="690" r="23" fill="rgb(16,33,105)" />
+                    <circle class="bubble animate-pop21" cx="550" cy="700" r="20" fill="rgb(16,33,105)" />
+                </svg>
+            </div>
+            <a href="#features" class="inline-block bg-white text-company px-8 py-4 rounded-full shadow hover:bg-company-light hover:text-white transition text-xl font-extrabold font-sans uppercase" style="font-family: system-ui, sans-serif;">KNOW MORE</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="w-full bg-white flex flex-col items-center px-2 sm:px-4 pt-8 mt-12 mb-12">
+        <!-- Updated grid layout for features -->
+        <div class="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <!-- Box 1 -->
+                <div class="mb-4">
+                    <div class="icon" style="font-size: 24px; color: #28a745;">🍹</div>
+                </div>
+                <h3 class="text-lg font-bold text-black mb-2"><b>BURST OF FLAVOR IN EVERY SIP</b></h3>
+                <p class="text-gray-700 text-base">with over 15+ Flavors</p>
+            </div>
+            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <!-- Placeholder for Icon 2 (Recycling) -->
+                <div class="mb-4">
+                    <!-- Replace with actual SVG icon -->
+                    ♻️
+                </div>
+                <h3 class="text-lg font-bold text-black mb-2">COMPLETELY RECYCLABLE</h3>
+                <p class="text-gray-700 text-base">PET BOTTLES</p>
+            </div>
+            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <!-- Box 3 -->
+                <div class="mb-4">
+                    <div class="icon" style="font-size: 24px; color: #ff4d4d;">🥤</div>
+                </div>
+                <h3 class="text-lg font-bold text-black mb-2"><b>YOUR PERFECT REFRESHING PARTNER</b></h3>
+                <p class="text-gray-700 text-base">in over 30+ franchises all over Telangana</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Train Animation Section -->
+    <section 
+        class="w-full relative overflow-hidden flex flex-col items-center justify-center mb-12 mt-12" 
+        style="
+            background-image: url('background.png'); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center;
+            background-color: #FFDA35;
+            min-height: 300px;
+        "
+    >
+        <div class="w-full h-[180px] md:h-[220px] relative flex items-center justify-center">
+            <!-- Train Image -->
+            <img 
+                src="train.png" 
+                alt="Train" 
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[250px] md:w-[400px] h-auto z-10"
+                id="scrollingTrain"
+                onload="setupTrainAnimation()"
+            />
+            
+            <!-- Railway Track Background -->
+            <div 
+                class="absolute left-0 w-full z-0"
+                style="
+                    height: 120px; 
+                    pointer-events: none; 
+                    background-image: url('track.png'); 
+                    background-repeat: repeat-x; 
+                    background-position: center; 
+                    background-size: auto 120px; 
+                    bottom: 12px;
+                "
+                id="track-bg"
+            ></div>
+        </div>
+    </section>
+
+    <!-- Station Branding Section -->
+    <section class="w-full bg-white py-16">
+        <div class="w-full">
+            <img 
+                src="Station branding.jpg" 
+                alt="SodaStation Branding and Station" 
+                class="w-full h-auto object-cover"
+            />
+        </div>
+    </section>
+
+    <!-- PET Bottles Section -->
+    <section class="w-full bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <img 
+                src="PETBOTTLES.png" 
+                alt="PET Bottles Collection" 
+                class="w-full h-auto object-cover rounded-lg shadow-lg"
+            />
+        </div>
+    </section>
+
+
+
+
+
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            mobileMenuBtn.classList.toggle('hamburger-open');
+            
+            // Add haptic feedback for mobile devices
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        });
+
+        // Header scroll behavior
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateHeader() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 40) {
+                header.style.transform = 'translateY(-100%)'; // scrolling down
+            } else {
+                header.style.transform = 'translateY(0)'; // scrolling up or near top
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('hamburger-open');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('hamburger-open');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Smooth scroll to top function (can be called when needed)
+        function smoothScrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Train Animation Functions
+        function setupTrainAnimation() {
+            const train = document.getElementById('scrollingTrain');
+            if (!train) {
+                console.log('Train element not found');
+                return;
+            }
+            
+            // Check if GSAP is loaded
+            if (typeof gsap === 'undefined') {
+                console.log('GSAP not loaded, using fallback animation');
+                train.classList.add('train-fallback');
+                return;
+            }
+            
+            const trainWidth = train.offsetWidth;
+            const screenWidth = window.innerWidth;
+            const startX = screenWidth;
+            const endX = -trainWidth;
+
+            console.log('Setting up train animation with GSAP');
+            
+            gsap.set(train, { x: startX });
+            gsap.killTweensOf(train);
+
+            gsap.to(train, {
+                x: endX,
+                duration: 6,
+                ease: "linear",
+                repeat: -1,
+                onRepeat: () => {
+                    gsap.set(train, { x: startX });
+                }
+            });
+            
+            gsap.to(train, {
+                y: "random(-2, 2)",
+                rotation: "random(-0.5, 0.5)",
+                ease: "none",
+                repeat: -1,
+                yoyo: true,
+                duration: 0.07
+            });
+        }
+
+        // Set up on window resize
+        function handleResize() {
+            setupTrainAnimation();
+        }
+        
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up train animation');
+            
+            // Set up resize listener
+            window.addEventListener('resize', handleResize);
+            
+            // Initialize with a delay to ensure images are loaded
+            setTimeout(() => {
+                setupTrainAnimation();
+            }, 500);
+            
+            // Ensure hero section is always visible on page load/reload
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Fallback if DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupTrainAnimation);
+        } else {
+            setTimeout(setupTrainAnimation, 500);
+        }
+
+        // WhatsApp Button Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappButton = document.querySelector('.whatsapp-button');
+            
+            if (!whatsappButton) {
+                console.error('WhatsApp button not found');
+                return;
+            }
+            
+            // Add click tracking
+            whatsappButton.addEventListener('click', function(e) {
+                // Prevent any default behavior
+                e.preventDefault();
+                
+                // Log the click
+                console.log('WhatsApp button clicked');
+                
+                // Open WhatsApp in new tab
+                window.open('https://wa.me/919000341655', '_blank', 'noopener,noreferrer');
+                
+                // Optional: Google Analytics event
+                // if (typeof gtag !== 'undefined') {
+                //     gtag('event', 'click', {
+                //         'event_category': 'engagement',
+                //         'event_label': 'whatsapp_button'
+                //     });
+                // }
+            });
+            
+            // Add touch support for mobile
+            let touchStartY = 0;
+            let touchEndY = 0;
+            
+            whatsappButton.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+            
+            whatsappButton.addEventListener('touchend', function(e) {
+                touchEndY = e.changedTouches[0].screenY;
+                if (touchEndY < touchStartY) {
+                    console.log('WhatsApp button swiped up');
+                }
+            }, { passive: true });
+            
+            // Add keyboard support
+            whatsappButton.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Ensure button is accessible
+            whatsappButton.setAttribute('role', 'button');
+            whatsappButton.setAttribute('tabindex', '0');
+            
+            console.log('WhatsApp button initialized successfully');
+        });
+        
+        // Fallback if DOMContentLoaded already fired for WhatsApp button
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                // This will be handled by the main listener above
+            });
+        } else {
+            // DOM already loaded, initialize immediately
+            setTimeout(function() {
+                const event = new Event('DOMContentLoaded');
+                document.dispatchEvent(event);
+            }, 100);
+        }
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+        href="https://wa.me/919000341655"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-fixed whatsapp-button whatsapp-shadow whatsapp-pulse rounded-full"
+        aria-label="Chat on WhatsApp"
+        title="Chat with us on WhatsApp"
+    >
+        <!-- WhatsApp Logo Image -->
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            class="w-16 h-16 object-contain"
+            loading="lazy"
+        />
+    </a>
+
+    <!-- Optional: Add a tooltip that appears on hover -->
+    <div class="whatsapp-fixed bg-black text-white px-3 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="bottom: 100px; right: 24px;">
+        Chat with us on WhatsApp
+    </div>
+</body>
+</html>
