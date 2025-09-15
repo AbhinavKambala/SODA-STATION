@@ -182,7 +182,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Custom CSS for train section */
+        /* Enhanced CSS for train section */
         @media (min-width: 1024px) {
             #track-bg { 
                 bottom: 14px !important; 
@@ -194,12 +194,263 @@
             }
         }
         
+        /* Enhanced train section background */
+        .train-section {
+            background: linear-gradient(135deg, 
+                #FFE55C 0%, 
+                #FFDA35 25%, 
+                #FFC107 50%, 
+                #FFDA35 75%, 
+                #FFE55C 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated gradient background */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Cloud animations - More clouds with better mobile support */
+        @keyframes cloudFloat1 {
+            0% { transform: translateX(0px) translateY(0px); }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(-20px); }
+        }
+        
+        @keyframes cloudFloat2 {
+            0% { transform: translateX(0px) translateY(10px); }
+            100% { transform: translateX(calc(100vw + 150px)) translateY(-10px); }
+        }
+        
+        @keyframes cloudFloat3 {
+            0% { transform: translateX(0px) translateY(5px); }
+            100% { transform: translateX(calc(100vw + 80px)) translateY(-15px); }
+        }
+        
+        @keyframes cloudFloat4 {
+            0% { transform: translateX(0px) translateY(-5px); }
+            100% { transform: translateX(calc(100vw + 120px)) translateY(15px); }
+        }
+        
+        @keyframes cloudFloat5 {
+            0% { transform: translateX(0px) translateY(8px); }
+            100% { transform: translateX(calc(100vw + 90px)) translateY(-8px); }
+        }
+        
+        @keyframes cloudFloat6 {
+            0% { transform: translateX(0px) translateY(-3px); }
+            100% { transform: translateX(calc(100vw + 110px)) translateY(12px); }
+        }
+        
+
+        
+        /* Cloud elements - Responsive design */
+        .cloud {
+            position: absolute;
+            left: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .cloud:before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+        }
+        
+        .cloud:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+        }
+        
+        .cloud1 {
+            width: 110px;
+            height: 38px;
+            top: 8%;
+            animation: cloudFloat1 30s linear infinite;
+        }
+        
+        .cloud1:before {
+            width: 70px;
+            height: 48px;
+            top: -24px;
+            left: 14px;
+        }
+        
+        .cloud1:after {
+            width: 85px;
+            height: 38px;
+            top: -14px;
+            right: 14px;
+        }
+        
+        .cloud2 {
+            width: 65px;
+            height: 26px;
+            top: 15%;
+            animation: cloudFloat2 35s linear infinite;
+            animation-delay: -6s;
+        }
+        
+        .cloud2:before {
+            width: 42px;
+            height: 35px;
+            top: -18px;
+            left: 8px;
+        }
+        
+        .cloud2:after {
+            width: 52px;
+            height: 26px;
+            top: -8px;
+            right: 8px;
+        }
+        
+        .cloud3 {
+            width: 140px;
+            height: 42px;
+            top: 5%;
+            animation: cloudFloat3 32s linear infinite;
+            animation-delay: -12s;
+        }
+        
+        .cloud3:before {
+            width: 85px;
+            height: 52px;
+            top: -26px;
+            left: 22px;
+        }
+        
+        .cloud3:after {
+            width: 105px;
+            height: 42px;
+            top: -16px;
+            right: 22px;
+        }
+        
+        .cloud4 {
+            width: 55px;
+            height: 22px;
+            top: 20%;
+            animation: cloudFloat4 28s linear infinite;
+            animation-delay: -18s;
+        }
+        
+        .cloud4:before {
+            width: 35px;
+            height: 28px;
+            top: -14px;
+            left: 6px;
+        }
+        
+        .cloud4:after {
+            width: 42px;
+            height: 22px;
+            top: -6px;
+            right: 6px;
+        }
+        
+        .cloud5 {
+            width: 125px;
+            height: 36px;
+            top: 12%;
+            animation: cloudFloat5 34s linear infinite;
+            animation-delay: -24s;
+        }
+        
+        .cloud5:before {
+            width: 78px;
+            height: 46px;
+            top: -23px;
+            left: 18px;
+        }
+        
+        .cloud5:after {
+            width: 92px;
+            height: 36px;
+            top: -12px;
+            right: 18px;
+        }
+        
+        .cloud6 {
+            width: 48px;
+            height: 20px;
+            top: 18%;
+            animation: cloudFloat6 31s linear infinite;
+            animation-delay: -30s;
+        }
+        
+        .cloud6:before {
+            width: 32px;
+            height: 30px;
+            top: -15px;
+            left: 6px;
+        }
+        
+        .cloud6:after {
+            width: 38px;
+            height: 20px;
+            top: -5px;
+            right: 6px;
+        }
+        
+
+        
+
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .cloud {
+                opacity: 0.6;
+            }
+            
+            .cloud1, .cloud2, .cloud3, .cloud4, .cloud5, .cloud6 {
+                transform: scale(0.7);
+            }
+            
+            .mountains {
+                height: 40px;
+                bottom: 35%;
+            }
+        }
+        
+
+        
+
+        
+
+        
+        /* Mountains silhouette */
+        .mountains {
+            position: absolute;
+            bottom: 40%;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(45deg, 
+                rgba(0,0,0,0.1) 0%, 
+                rgba(0,0,0,0.2) 25%, 
+                rgba(0,0,0,0.1) 50%, 
+                rgba(0,0,0,0.2) 75%, 
+                rgba(0,0,0,0.1) 100%);
+            clip-path: polygon(0% 100%, 15% 60%, 30% 80%, 45% 50%, 60% 70%, 75% 40%, 90% 65%, 100% 45%, 100% 100%);
+            opacity: 0.6;
+        }
+        
         @media (min-width: 1024px) {
-            section[style*='background-image'] {
-                background-size: contain !important;
-                background-repeat: no-repeat !important;
-                background-position: center !important;
-                background-color: #FFDA35 !important;
+            .train-section {
+                background-size: contain, 400% 400% !important;
+                background-repeat: no-repeat, repeat !important;
+                background-position: center, 0% 50% !important;
             }
         }
         
@@ -297,62 +548,143 @@
 
         /* Custom styles for WhatsApp button */
         .whatsapp-button {
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            transform-origin: center;
         }
         
         .whatsapp-button:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(-5deg);
+            background: linear-gradient(135deg, #22c45e 0%, #0f7a6b 100%);
+            box-shadow: 
+                0 12px 40px rgba(37, 211, 102, 0.6),
+                0 6px 20px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .whatsapp-button:active {
-            transform: scale(0.95);
+            transform: scale(0.95) rotate(0deg);
+            transition-duration: 0.1s;
         }
         
-        /* Custom shadow */
+        /* Enhanced WhatsApp shadow with glow effect */
         .whatsapp-shadow {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(37, 211, 102, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
-        /* Pulse animation */
-        @keyframes pulse {
+        /* Enhanced pulse animation with breathing effect */
+        @keyframes whatsappPulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+                box-shadow: 
+                    0 8px 32px rgba(37, 211, 102, 0.4),
+                    0 4px 16px rgba(0, 0, 0, 0.1),
+                    0 0 0 0 rgba(37, 211, 102, 0.8),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                transform: scale(1);
             }
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            50% {
+                box-shadow: 
+                    0 12px 40px rgba(37, 211, 102, 0.5),
+                    0 6px 20px rgba(0, 0, 0, 0.15),
+                    0 0 0 8px rgba(37, 211, 102, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                transform: scale(1.02);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+                box-shadow: 
+                    0 8px 32px rgba(37, 211, 102, 0.4),
+                    0 4px 16px rgba(0, 0, 0, 0.1),
+                    0 0 0 0 rgba(37, 211, 102, 0),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                transform: scale(1);
+            }
+        }
+        
+        /* Floating bounce animation */
+        @keyframes whatsappFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-3px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-6px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-3px) rotate(-1deg);
             }
         }
         
         .whatsapp-pulse {
-            animation: pulse 2s infinite;
+            animation: 
+                whatsappPulse 2.5s ease-in-out infinite,
+                whatsappFloat 3.5s ease-in-out infinite;
         }
         
-        /* Ensure proper z-index and positioning */
+        /* Enhanced positioning with smoother entrance */
         .whatsapp-fixed {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 9999;
+            animation: whatsappEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s both;
         }
         
-        /* Mobile responsive adjustments */
+        /* Entrance animation */
+        @keyframes whatsappEntrance {
+            0% {
+                transform: scale(0) rotate(180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Mobile responsive adjustments with better touch targets */
         @media (max-width: 768px) {
             .whatsapp-fixed {
                 bottom: 20px;
                 right: 20px;
+                transform: scale(0.9);
+            }
+            
+            .whatsapp-button:hover {
+                transform: scale(1.05) rotate(-3deg);
             }
         }
         
-        /* Prevent text selection */
+        /* Enhanced accessibility and interaction */
         .whatsapp-button {
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border: none;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-button:focus {
+            outline: 3px solid rgba(37, 211, 102, 0.5);
+            outline-offset: 2px;
+        }
+        
+        .whatsapp-button img {
+            width: 40px;
+            height: 40px;
         }
         
         
@@ -380,6 +712,239 @@
                 background-position: 0% 0%;
             }
         }
+
+        /* Statistics Counter Animation Styles - Simple Flow */
+        .stats-counter {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        /* Gentle wave flow animation */
+        .stats-wave {
+            animation: gentleWave 2s ease-in-out;
+        }
+        
+        @keyframes gentleWave {
+            0% { 
+                transform: translateY(20px) scale(0.8); 
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-5px) scale(1.05);
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(0) scale(1); 
+                opacity: 1;
+            }
+        }
+        
+        /* Smooth slide in animation */
+        .stats-slide {
+            animation: smoothSlide 2.2s ease-out;
+        }
+        
+        @keyframes smoothSlide {
+            0% { 
+                transform: translateX(-30px) rotateY(45deg); 
+                opacity: 0;
+            }
+            60% {
+                transform: translateX(3px) rotateY(-5deg);
+                opacity: 0.9;
+            }
+            100% { 
+                transform: translateX(0) rotateY(0deg); 
+                opacity: 1;
+            }
+        }
+        
+        /* Gentle pulse flow */
+        .stats-pulse-flow {
+            animation: gentlePulseFlow 2.5s ease-in-out;
+        }
+        
+        @keyframes gentlePulseFlow {
+            0% { 
+                transform: scale(0.3); 
+                opacity: 0;
+            }
+            30% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            60% {
+                transform: scale(0.95);
+                opacity: 0.9;
+            }
+            100% { 
+                transform: scale(1); 
+                opacity: 1;
+            }
+        }
+        
+        /* Floating flow animation */
+        .stats-float {
+            animation: floatingFlow 2.8s ease-in-out;
+        }
+        
+        @keyframes floatingFlow {
+            0% { 
+                transform: translateY(40px) rotateX(30deg); 
+                opacity: 0;
+            }
+            40% {
+                transform: translateY(-8px) rotateX(-3deg);
+                opacity: 0.8;
+            }
+            70% {
+                transform: translateY(2px) rotateX(1deg);
+                opacity: 0.95;
+            }
+            100% { 
+                transform: translateY(0) rotateX(0deg); 
+                opacity: 1;
+            }
+        }
+        
+        /* Circle flow effects - subtle */
+        .circle-wave {
+            animation: circleWave 2s ease-in-out;
+        }
+        
+        @keyframes circleWave {
+            0% { 
+                box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+                transform: scale(0.9);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+                transform: scale(1.02);
+            }
+            100% { 
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                transform: scale(1);
+            }
+        }
+        
+        .circle-slide {
+            animation: circleSlide 2.2s ease-out;
+        }
+        
+        @keyframes circleSlide {
+            0% { 
+                box-shadow: 0 0 0 rgba(16, 33, 105, 0);
+                transform: scale(0.8) rotateY(20deg);
+            }
+            60% {
+                box-shadow: 0 0 15px rgba(16, 33, 105, 0.2);
+                transform: scale(1.03) rotateY(-2deg);
+            }
+            100% { 
+                box-shadow: 0 0 8px rgba(16, 33, 105, 0.1);
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+        
+        .circle-pulse-flow {
+            animation: circlePulseFlow 2.5s ease-in-out;
+        }
+        
+        @keyframes circlePulseFlow {
+            0% { 
+                box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+                transform: scale(0.7);
+            }
+            40% {
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+                transform: scale(1);
+            }
+        }
+        
+        .circle-float {
+            animation: circleFloat 2.8s ease-in-out;
+        }
+        
+        @keyframes circleFloat {
+            0% { 
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                transform: translateY(10px) scale(0.85);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+                transform: translateY(-3px) scale(1.02);
+            }
+            100% { 
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Enhanced pattern animation for value cards */
+        @keyframes patternMove {
+            0% { transform: translateX(-30px) translateY(-30px); }
+            100% { transform: translateX(30px) translateY(30px); }
+        }
+        
+        /* Floating particles animation */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow effect for interactive elements */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 33, 105, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 33, 105, 0.6), 0 0 40px rgba(16, 33, 105, 0.3);
+            }
+        }
+        
+        /* Hover animations for enhanced cards */
+        .enhanced-card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .enhanced-card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Ripple effect for buttons */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ripple:hover::before {
+            width: 300px;
+            height: 300px;
+        }
     </style>
 </head>
 <body class="font-sans min-h-screen text-gray-800 scroll-smooth w-full overflow-x-hidden">
@@ -392,6 +957,7 @@
             <a href="#features" class="text-white hover:text-company-light transition">Features</a>
             <a href="#about" class="text-white hover:text-company-light transition">About</a>
             <a href="#contact" class="text-white hover:text-company-light transition">Contact</a>
+            <a href="#faq" class="text-white hover:text-company-light transition">FAQs</a>
         </div>
         <!-- Hamburger Icon for Mobile -->
         <button
@@ -408,6 +974,7 @@
             <a href="#features" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Features</a>
             <a href="#about" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">About</a>
             <a href="#contact" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Contact</a>
+            <a href="#faq" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">FAQs</a>
         </div>
     </nav>
 
@@ -459,58 +1026,142 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="w-full bg-white flex flex-col items-center px-2 sm:px-4 pt-8 mt-12 mb-12">
-        <!-- Updated grid layout for features -->
-        <div class="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <!-- Box 1 -->
-                <div class="mb-4">
-                    <div class="icon" style="font-size: 24px; color: #28a745;">🍹</div>
-                </div>
-                <h3 class="text-lg font-bold text-black mb-2"><b>BURST OF FLAVOR IN EVERY SIP</b></h3>
-                <p class="text-gray-700 text-base">with over 15+ Flavors</p>
+    <!-- Features Section - HubSpot Style Design with FAQ -->
+    <section id="features" class="w-full bg-gray-50 py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; letter-spacing: -0.025em;">Why Choose SodaStation</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Experience the authentic taste that brings back childhood memories with every sip</p>
             </div>
-            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <!-- Placeholder for Icon 2 (Recycling) -->
-                <div class="mb-4">
-                    <!-- Replace with actual SVG icon -->
-                    ♻️
+            
+
+            
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-green-100 rounded-full p-3 mr-4">
+                            <div class="text-2xl">🍹</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">Burst of Flavor</h3>
+                            <p class="text-sm text-gray-500" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">in every sip</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Experience an explosion of authentic taste with our carefully crafted selection of traditional flavors.</p>
+                    <div class="bg-green-50 rounded-md px-3 py-2 inline-block">
+                        <span class="text-green-700 font-semibold text-sm" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">15+ Unique Flavors</span>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-black mb-2">COMPLETELY RECYCLABLE</h3>
-                <p class="text-gray-700 text-base">PET BOTTLES</p>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-3 mr-4">
+                            <div class="text-2xl">♻️</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">100% Recyclable</h3>
+                            <p class="text-sm text-gray-500" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">eco-friendly packaging</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Committed to environmental sustainability with completely recyclable PET bottles for a greener future.</p>
+                    <div class="bg-blue-50 rounded-md px-3 py-2 inline-block">
+                        <span class="text-blue-700 font-semibold text-sm" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Sustainable Choice</span>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-orange-100 rounded-full p-3 mr-4">
+                            <div class="text-2xl">🥤</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">Perfect Partner</h3>
+                            <p class="text-sm text-gray-500" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">refreshing companion</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Available across Telangana through our extensive franchise network, serving communities with quality.</p>
+                    <div class="bg-orange-50 rounded-md px-3 py-2 inline-block">
+                        <span class="text-orange-700 font-semibold text-sm" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">30+ Locations</span>
+                    </div>
+                </div>
             </div>
-            <div class="rounded-2xl shadow-lg bg-white p-8 flex flex-col items-center text-center rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <!-- Box 3 -->
-                <div class="mb-4">
-                    <div class="icon" style="font-size: 24px; color: #ff4d4d;">🥤</div>
+            
+            <!-- Stats Row -->
+            <div class="mt-16 bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">15+</div>
+                        <div class="text-sm text-gray-600" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Unique Flavors</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">30+</div>
+                        <div class="text-sm text-gray-600" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Franchise Locations</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">100%</div>
+                        <div class="text-sm text-gray-600" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Recyclable Bottles</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif; font-weight: 700;">24/7</div>
+                        <div class="text-sm text-gray-600" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">Customer Support</div>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-black mb-2"><b>YOUR PERFECT REFRESHING PARTNER</b></h3>
-                <p class="text-gray-700 text-base">in over 30+ franchises all over Telangana</p>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="text-center mt-12">
+                <a href="#about" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-md hover:bg-gray-800 transition-colors duration-200 mr-4" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">
+                    Learn More
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="#contact" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-md hover:border-gray-400 transition-colors duration-200" style="font-family: 'Avenir', 'Helvetica Neue', Arial, sans-serif;">
+                    Contact Us
+                </a>
             </div>
         </div>
     </section>
 
 
 
-    <!-- Train Animation Section -->
+    <!-- Enhanced Train Animation Section -->
     <section 
-        class="w-full relative overflow-hidden flex flex-col items-center justify-center mb-12 mt-12" 
+        class="w-full relative overflow-hidden flex flex-col items-center justify-center mb-12 mt-12 train-section" 
         style="
-            background-image: url('background.png'); 
-            background-repeat: no-repeat; 
-            background-size: cover; 
-            background-position: center;
-            background-color: #FFDA35;
+            background-image: url('background.png'), linear-gradient(135deg, #FFE55C 0%, #FFDA35 25%, #FFC107 50%, #FFDA35 75%, #FFE55C 100%); 
+            background-repeat: no-repeat, repeat; 
+            background-size: cover, 400% 400%; 
+            background-position: center, 0% 50%;
             min-height: 300px;
         "
     >
-        <div class="w-full h-[180px] md:h-[220px] relative flex items-center justify-center">
+        <!-- Animated Background Elements -->
+
+        
+        <!-- Clouds for natural sky coverage -->
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+        <div class="cloud cloud6"></div>
+        
+        <!-- Mountains silhouette -->
+        <div class="mountains"></div>
+        
+        <!-- Main train content -->
+        <div class="w-full h-[180px] md:h-[220px] relative flex items-center justify-center z-10">
             <!-- Train Image -->
             <img 
                 src="train.png" 
                 alt="Train" 
-                class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[250px] md:w-[400px] h-auto z-10"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[250px] md:w-[400px] h-auto z-20"
                 id="scrollingTrain"
                 onload="setupTrainAnimation()"
             />
@@ -530,16 +1181,450 @@
                 id="track-bg"
             ></div>
         </div>
+        
+        <!-- Animated grass/ground elements -->
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-green-400/20 to-transparent pointer-events-none"></div>
     </section>
 
     <!-- Station Branding Section -->
-    <section class="w-full bg-white py-16">
-        <div class="w-full">
-            <img 
-                src="Station branding.jpg" 
-                alt="SodaStation Branding and Station" 
-                class="w-full h-auto object-cover"
-            />
+    <section class="w-full">
+        <img 
+            src="Station branding.jpg" 
+            alt="SodaStation Branding and Station" 
+            class="w-full h-auto object-cover"
+        />
+    </section>
+
+    <!-- About Us Section - Enhanced -->
+    <section id="about" class="w-full bg-gradient-to-br from-gray-50 via-white to-gray-100 py-20 relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-company rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-40 h-40 bg-blue-300 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-indigo-200 rounded-full blur-2xl animate-pulse" style="animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <!-- Section Header - Enhanced -->
+            <div class="text-center mb-20 transform hover:scale-105 transition-all duration-500">
+                <div class="inline-block mb-4">
+                    <span class="bg-gradient-to-r from-company to-blue-600 bg-clip-text text-transparent text-sm font-bold tracking-widest uppercase mb-2 block">Our Story</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-company via-blue-700 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
+                    About SodaStation
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-company to-blue-600 mx-auto mb-6 rounded-full"></div>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+                    Bringing back the nostalgic taste of childhood, one refreshing sip at a time. 
+                    <span class="bg-gradient-to-r from-company to-blue-600 bg-clip-text text-transparent font-medium">Crafted with passion, served with love.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <!-- Our Story - Enhanced -->
+                <div class="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 group">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gradient-to-br from-company to-blue-600 text-white rounded-2xl w-16 h-16 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 group-hover:text-company transition-colors duration-300">Our Journey</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                        SodaStation was born from a simple yet powerful idea: to recreate the authentic taste of childhood sodas that we all remember fondly. Our journey began with a passion for bringing back those precious moments when a simple goli could brighten an entire day.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Founded in the heart of Telangana, we've dedicated ourselves to crafting premium sodas using traditional recipes combined with modern quality standards. Every bottle of SodaStation carries the essence of nostalgia while meeting today's expectations for taste and quality.
+                    </p>
+                </div>
+
+                <!-- Mission & Values - Enhanced -->
+                <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-10 shadow-2xl border border-gray-100 hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 group">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl w-16 h-16 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300">Our Mission</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3 group/item hover:bg-green-50 p-3 rounded-xl transition-all duration-300">
+                            <div class="bg-gradient-to-br from-company to-blue-600 text-white rounded-full p-2 mt-1 group-hover/item:scale-110 transition-transform duration-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg group-hover/item:text-company transition-colors duration-300">Authentic Flavors</h4>
+                                <p class="text-gray-600">Traditional recipes perfected over generations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group/item hover:bg-green-50 p-3 rounded-xl transition-all duration-300">
+                            <div class="bg-gradient-to-br from-company to-blue-600 text-white rounded-full p-2 mt-1 group-hover/item:scale-110 transition-transform duration-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg group-hover/item:text-company transition-colors duration-300">Premium Quality</h4>
+                                <p class="text-gray-600">Premium ingredients and strict quality control</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group/item hover:bg-green-50 p-3 rounded-xl transition-all duration-300">
+                            <div class="bg-gradient-to-br from-company to-blue-600 text-white rounded-full p-2 mt-1 group-hover/item:scale-110 transition-transform duration-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg group-hover/item:text-company transition-colors duration-300">Environmental Responsibility</h4>
+                                <p class="text-gray-600">100% recyclable PET bottles for sustainable future</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Statistics Section - Enhanced with Interactive Design -->
+            <div class="bg-gradient-to-r from-blue-50 via-white to-indigo-50 rounded-3xl p-8 md:p-12 mb-16 shadow-2xl border border-gray-100 relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 20% 30%, #102169 1px, transparent 1px), radial-gradient(circle at 80% 70%, #102169 1px, transparent 1px); background-size: 50px 50px;"></div>
+                </div>
+                
+                <div class="text-center mb-12 relative z-10">
+                    <h3 class="text-4xl font-bold bg-gradient-to-r from-company to-blue-600 bg-clip-text text-transparent mb-4">Our Impact in Numbers</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-company to-blue-600 mx-auto rounded-full mb-4"></div>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">These numbers tell the story of our commitment to quality, community, and sustainability</p>
+                </div>
+                
+                <div id="statistics-section" class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <div class="text-center group hover:scale-105 transition-all duration-500">
+                        <div class="relative mb-6">
+                            <div id="circle-1" class="bg-gradient-to-br from-company to-blue-600 text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-blue-200">
+                                <span id="flavors-counter" class="text-2xl font-bold stats-counter" data-target="15">0+</span>
+                            </div>
+                            <!-- Floating elements around circle -->
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full opacity-80 group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="absolute -bottom-1 -left-1 w-4 h-4 bg-orange-400 rounded-full opacity-70 group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s;"></div>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-company transition-colors duration-300">Unique Flavors</h4>
+                        <p class="text-gray-600 leading-relaxed">Carefully crafted authentic recipes that bring back childhood memories</p>
+                    </div>
+                    
+                    <div class="text-center group hover:scale-105 transition-all duration-500">
+                        <div class="relative mb-6">
+                            <div id="circle-2" class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-green-200">
+                                <span id="locations-counter" class="text-2xl font-bold stats-counter" data-target="30">0+</span>
+                            </div>
+                            <!-- Floating elements -->
+                            <div class="absolute -top-1 -right-3 w-5 h-5 bg-blue-400 rounded-full opacity-75 group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="absolute -bottom-2 -left-2 w-3 h-3 bg-purple-400 rounded-full opacity-80 group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.3s;"></div>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors duration-300">Franchise Locations</h4>
+                        <p class="text-gray-600 leading-relaxed">Proudly serving communities across Telangana with excellence</p>
+                    </div>
+                    
+                    <div class="text-center group hover:scale-105 transition-all duration-500">
+                        <div class="relative mb-6">
+                            <div id="circle-3" class="bg-gradient-to-br from-emerald-500 to-green-600 text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-emerald-200">
+                                <span id="recyclable-counter" class="text-2xl font-bold stats-counter" data-target="100">0%</span>
+                            </div>
+                            <!-- Floating elements -->
+                            <div class="absolute -top-2 -right-1 w-4 h-4 bg-green-300 rounded-full opacity-80 group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="absolute -bottom-1 -left-3 w-6 h-6 bg-teal-400 rounded-full opacity-70 group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.4s;"></div>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors duration-300">Recyclable</h4>
+                        <p class="text-gray-600 leading-relaxed">Eco-friendly PET bottles contributing to a sustainable future</p>
+                    </div>
+                    
+                    <div class="text-center group hover:scale-105 transition-all duration-500">
+                        <div class="relative mb-6">
+                            <div id="circle-4" class="bg-gradient-to-br from-purple-500 to-indigo-600 text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-200">
+                                <span id="support-counter" class="text-xl font-bold stats-counter" data-target="24">0/7</span>
+                            </div>
+                            <!-- Floating elements -->
+                            <div class="absolute -top-3 -right-2 w-5 h-5 bg-pink-400 rounded-full opacity-75 group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="absolute -bottom-2 -left-1 w-4 h-4 bg-indigo-400 rounded-full opacity-80 group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.5s;"></div>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">Customer Support</h4>
+                        <p class="text-gray-600 leading-relaxed">Always here to help you with dedicated 24/7 assistance</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Values - Enhanced with Advanced Interactivity -->
+            <div class="bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl p-10 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden mb-16">
+                <!-- Animated background pattern -->
+                <div class="absolute inset-0 opacity-3">
+                    <div class="absolute top-0 left-0 w-full h-full" style="background-image: linear-gradient(45deg, transparent 40%, rgba(16, 33, 105, 0.05) 50%, transparent 60%); background-size: 30px 30px; animation: patternMove 20s linear infinite;"></div>
+                </div>
+                
+                <div class="text-center mb-12 relative z-10">
+                    <div class="inline-block mb-6">
+                        <span class="bg-gradient-to-r from-company to-purple-600 bg-clip-text text-transparent text-sm font-bold tracking-widest uppercase block mb-2">Our Values</span>
+                        <h3 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-company via-purple-600 to-indigo-600 bg-clip-text text-transparent">What Drives Us</h3>
+                        <div class="w-20 h-1 bg-gradient-to-r from-company to-purple-600 mx-auto mt-4 rounded-full"></div>
+                    </div>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">Our core values shape every decision we make and every bottle we craft</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    <!-- Passion for Taste -->
+                    <div class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-gradient-to-br hover:from-white hover:to-red-50 relative overflow-hidden">
+                            <!-- Hover background effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-400/10 to-pink-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="bg-gradient-to-br from-red-100 to-pink-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:shadow-lg">
+                                    <svg class="w-10 h-10 text-red-600 group-hover:text-red-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-red-700 transition-colors duration-300">Passion for Taste</h4>
+                                <p class="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">Every flavor is crafted with love and attention to detail, ensuring each sip brings back cherished memories and creates new ones.</p>
+                                
+                                <!-- Hover reveal content -->
+                                <div class="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                    <div class="border-t border-red-200 pt-4">
+                                        <p class="text-sm text-red-600 font-medium text-center">15+ unique recipes perfected over generations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quality Excellence -->
+                    <div class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-gradient-to-br hover:from-white hover:to-green-50 relative overflow-hidden">
+                            <!-- Hover background effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:shadow-lg">
+                                    <svg class="w-10 h-10 text-green-600 group-hover:text-green-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-green-700 transition-colors duration-300">Quality Excellence</h4>
+                                <p class="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">We never compromise on quality, using only the finest ingredients and maintaining the highest standards in every process.</p>
+                                
+                                <!-- Hover reveal content -->
+                                <div class="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                    <div class="border-t border-green-200 pt-4">
+                                        <p class="text-sm text-green-600 font-medium text-center">ISO certified facilities & premium ingredients</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Community Focus -->
+                    <div class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-gradient-to-br hover:from-white hover:to-purple-50 relative overflow-hidden">
+                            <!-- Hover background effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-indigo-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:shadow-lg">
+                                    <svg class="w-10 h-10 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-purple-700 transition-colors duration-300">Community Focus</h4>
+                                <p class="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">Building strong relationships with our franchise partners and serving local communities across Telangana with pride.</p>
+                                
+                                <!-- Hover reveal content -->
+                                <div class="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                    <div class="border-t border-purple-200 pt-4">
+                                        <p class="text-sm text-purple-600 font-medium text-center">30+ locations serving local communities</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Testimonials - New Addition -->
+            <div class="bg-gradient-to-br from-gray-50 via-white to-blue-50 rounded-3xl p-10 md:p-12 mb-16 relative overflow-hidden">
+                <!-- Background decoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-company/5 to-blue-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-purple-500/5 to-pink-500/5 rounded-full blur-2xl"></div>
+                
+                <div class="text-center mb-12 relative z-10">
+                    <span class="bg-gradient-to-r from-company to-blue-600 bg-clip-text text-transparent text-sm font-bold tracking-widest uppercase block mb-2">What People Say</span>
+                    <h3 class="text-4xl font-bold bg-gradient-to-r from-company via-blue-700 to-indigo-600 bg-clip-text text-transparent mb-4">Loved by Thousands</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-company to-blue-600 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-center mb-6 leading-relaxed italic group-hover:text-gray-700 transition-colors duration-300">"SodaStation brings back all the childhood memories! The authentic taste is exactly what I remember from my school days. Simply amazing!"</p>
+                        <div class="text-center">
+                            <h5 class="font-bold text-gray-800 group-hover:text-company transition-colors duration-300">Priya Sharma</h5>
+                            <p class="text-sm text-gray-500">Happy Customer, Hyderabad</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-center mb-6 leading-relaxed italic group-hover:text-gray-700 transition-colors duration-300">"As a franchise owner, I'm impressed by their support and quality standards. Customers love the authentic flavors and keep coming back for more!"</p>
+                        <div class="text-center">
+                            <h5 class="font-bold text-gray-800 group-hover:text-company transition-colors duration-300">Rajesh Kumar</h5>
+                            <p class="text-sm text-gray-500">Franchise Owner, Warangal</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-center mb-6 leading-relaxed italic group-hover:text-gray-700 transition-colors duration-300">"I love that they use eco-friendly bottles! Great taste with environmental responsibility - that's what makes SodaStation special for our family."</p>
+                        <div class="text-center">
+                            <h5 class="font-bold text-gray-800 group-hover:text-company transition-colors duration-300">Meena Reddy</h5>
+                            <p class="text-sm text-gray-500">Environmental Advocate, Nizamabad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action - Enhanced with Premium Design -->
+            <div class="bg-gradient-to-r from-company via-blue-700 to-indigo-800 rounded-3xl p-12 md:p-16 text-white text-center relative overflow-hidden shadow-2xl">
+                <!-- Animated background elements -->
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+                    <div class="absolute bottom-10 right-10 w-40 h-40 bg-yellow-300/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+                    <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-blue-300/10 rounded-full blur-xl animate-pulse" style="animation-delay: 4s;"></div>
+                    <!-- Floating particles -->
+                    <div class="absolute top-20 right-1/4 w-2 h-2 bg-white/30 rounded-full animate-bounce" style="animation-delay: 1s;"></div>
+                    <div class="absolute bottom-32 left-1/4 w-3 h-3 bg-yellow-300/40 rounded-full animate-bounce" style="animation-delay: 3s;"></div>
+                    <div class="absolute top-1/3 right-20 w-1.5 h-1.5 bg-blue-300/50 rounded-full animate-bounce" style="animation-delay: 5s;"></div>
+                </div>
+                
+                <div class="relative z-10">
+                    <!-- Icon -->
+                    <div class="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8 hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Join the SodaStation Family</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-yellow-300 to-orange-300 mx-auto mb-6 rounded-full"></div>
+                    <p class="text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">Whether you're looking for franchise opportunities or just want to stay connected, we'd love to hear from you. Let's create something amazing together!</p>
+                    
+                    <!-- Enhanced buttons -->
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="#contact" class="group inline-flex items-center px-8 py-4 bg-white text-company font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform">
+                            <div class="bg-company/10 rounded-full p-2 mr-3 group-hover:bg-company/20 transition-colors duration-300">
+                                <svg class="w-5 h-5 text-company" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <span>Contact Us</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        
+                        <a href="https://wa.me/919000341655" target="_blank" class="group inline-flex items-center px-8 py-4 bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform">
+                            <div class="bg-white/20 rounded-full p-2 mr-3 group-hover:bg-white/30 transition-colors duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                </svg>
+                            </div>
+                            <span>WhatsApp Us</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Additional info -->
+                    <div class="mt-10 pt-8 border-t border-white/20">
+                        <p class="text-white/70 text-lg mb-4">Join over <span class="font-bold text-yellow-300">10,000+</span> satisfied customers</p>
+                        <div class="flex justify-center items-center space-x-1 text-yellow-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <span class="ml-2 text-white/80">4.9/5 Average Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -760,6 +1845,149 @@
             });
         }
 
+        // FAQ Accordion functionality - Global function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.add('hidden');
+                    item.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                }
+            });
+            
+            // Toggle current FAQ item
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Statistics Counter Animation with Simple Flow
+        function animateCounterFlow(element, target, suffix = '', duration = 2000, easingType = 'ease') {
+            // Simple smooth flowing animation
+            const startTime = performance.now();
+            const startValue = 0;
+            
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Different easing functions for flow
+                let easedProgress;
+                switch(easingType) {
+                    case 'wave':
+                        easedProgress = Math.sin(progress * Math.PI / 2);
+                        break;
+                    case 'slide':
+                        easedProgress = 1 - Math.pow(1 - progress, 3);
+                        break;
+                    case 'pulse':
+                        easedProgress = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                        break;
+                    case 'float':
+                        easedProgress = progress * progress * (3 - 2 * progress);
+                        break;
+                    default:
+                        easedProgress = progress;
+                }
+                
+                const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+                element.textContent = currentValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    element.textContent = target + suffix;
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        // Setup Statistics Animation Observer with Simple Flow
+        function setupStatisticsAnimation() {
+            const statisticsSection = document.getElementById('statistics-section');
+            if (!statisticsSection) return;
+
+            const counters = [
+                { 
+                    id: 'flavors-counter', 
+                    circleId: 'circle-1',
+                    target: 15, 
+                    suffix: '+', 
+                    animationType: 'wave', 
+                    name: '🌊 Gentle Wave' 
+                },
+                { 
+                    id: 'locations-counter', 
+                    circleId: 'circle-2',
+                    target: 30, 
+                    suffix: '+', 
+                    animationType: 'slide', 
+                    name: '✨ Smooth Slide' 
+                },
+                { 
+                    id: 'recyclable-counter', 
+                    circleId: 'circle-3',
+                    target: 100, 
+                    suffix: '%', 
+                    animationType: 'pulse', 
+                    name: '💓 Gentle Pulse' 
+                },
+                { 
+                    id: 'support-counter', 
+                    circleId: 'circle-4',
+                    target: 24, 
+                    suffix: '/7', 
+                    animationType: 'float', 
+                    name: '🪶 Floating Flow' 
+                }
+            ];
+
+            let hasAnimated = false;
+
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        console.log('🌊 Starting flowing statistics animations!');
+                        
+                        // Animate each counter with gentle flow effects and staggered timing
+                        counters.forEach((counter, index) => {
+                            const element = document.getElementById(counter.id);
+                            const circleElement = document.getElementById(counter.circleId);
+                            if (element && circleElement) {
+                                console.log(`${counter.name} for ${counter.id}`);
+                                setTimeout(() => {
+                                    // Start gentle circle animation
+                                    circleElement.classList.add(`circle-${counter.animationType}`);
+                                    
+                                    // Start text animation
+                                    element.classList.add(`stats-${counter.animationType}`);
+                                    
+                                    // Start counter animation with flow
+                                    const duration = 2000 + (index * 200); // Slightly longer for each
+                                    animateCounterFlow(element, counter.target, counter.suffix, duration, counter.animationType);
+                                    
+                                    // Clean up animations after completion
+                                    setTimeout(() => {
+                                        circleElement.classList.remove(`circle-${counter.animationType}`);
+                                        element.classList.remove(`stats-${counter.animationType}`);
+                                    }, duration + 500);
+                                }, index * 400); // 400ms delay for flowing sequence
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.5 // Trigger when 50% of the section is visible
+            });
+
+            observer.observe(statisticsSection);
+        }
+
         // Set up on window resize
         function handleResize() {
             setupTrainAnimation();
@@ -783,23 +2011,8 @@
             // Enable basic protection
             disableRightClick();
             
-            // FAQ Accordion functionality
-            function toggleFAQ(button) {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('.faq-icon');
-                
-                // Close all other FAQ items
-                document.querySelectorAll('.faq-content').forEach(item => {
-                    if (item !== content) {
-                        item.classList.add('hidden');
-                        item.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
-                    }
-                });
-                
-                // Toggle current FAQ item
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            }
+            // Setup statistics animation
+            setupStatisticsAnimation();
             
             // Ensure hero section is always visible on page load/reload
             window.scrollTo({
@@ -818,11 +2031,100 @@
         // WhatsApp Button Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const whatsappButton = document.querySelector('.whatsapp-button');
+            const heroSection = document.querySelector('#home');
             
             if (!whatsappButton) {
                 console.error('WhatsApp button not found');
                 return;
             }
+            
+            if (!heroSection) {
+                console.error('Hero section not found');
+                return;
+            }
+            
+            // Function to check if user is in hero section
+            function checkHeroSection() {
+                const heroRect = heroSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                // Hide button if hero section is visible (taking up more than 30% of viewport)
+                return heroRect.bottom > viewportHeight * 0.3;
+            }
+            
+            // Function to update button visibility based on section
+            function updateButtonVisibility() {
+                const isInHero = checkHeroSection();
+                
+                if (isInHero) {
+                    // Hide button in hero section with smooth transition
+                    whatsappButton.style.setProperty('transform', 'scale(0)', 'important');
+                    whatsappButton.style.setProperty('opacity', '0', 'important');
+                    whatsappButton.style.setProperty('visibility', 'hidden', 'important');
+                    whatsappButton.style.setProperty('pointer-events', 'none', 'important');
+                    whatsappButton.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                } else {
+                    // Show button in other sections with smooth transition
+                    whatsappButton.style.setProperty('visibility', 'visible', 'important');
+                    whatsappButton.style.setProperty('pointer-events', 'auto', 'important');
+                    whatsappButton.style.setProperty('transform', 'scale(1)', 'important');
+                    whatsappButton.style.setProperty('opacity', '1', 'important');
+                    whatsappButton.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                }
+            }
+            
+            // Initial check with slight delay to ensure proper loading
+            setTimeout(updateButtonVisibility, 100);
+            
+            // Scroll-based translucency effect
+            let scrollTimeout;
+            let isScrolling = false;
+            
+            function handleScroll() {
+                // Check visibility first
+                updateButtonVisibility();
+                
+                // Only apply translucency if button is visible (not in hero section)
+                if (!checkHeroSection()) {
+                    isScrolling = true;
+                    // Temporarily pause CSS animations to allow opacity change
+                    whatsappButton.style.setProperty('animation-play-state', 'paused', 'important');
+                    // Make button translucent while scrolling
+                    whatsappButton.style.setProperty('opacity', '0.99', 'important');
+                    whatsappButton.style.setProperty('transition', 'opacity 0.15s ease-out', 'important');
+                    
+                    // Clear existing timeout
+                    clearTimeout(scrollTimeout);
+                    
+                    // Set timeout to restore full opacity after scrolling stops
+                    scrollTimeout = setTimeout(() => {
+                        if (!checkHeroSection()) {
+                            whatsappButton.style.setProperty('opacity', '1', 'important');
+                            whatsappButton.style.setProperty('transition', 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)', 'important');
+                            // Resume CSS animations after opacity transition
+                            setTimeout(() => {
+                                whatsappButton.style.removeProperty('animation-play-state');
+                            }, 800);
+                        }
+                        isScrolling = false;
+                    }, 1120);
+                }
+            }
+            
+            // Add scroll event listener with throttling for better performance
+            let ticking = false;
+            function optimizedScrollHandler() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+            window.addEventListener('resize', updateButtonVisibility, { passive: true });
             
             // Add click tracking
             whatsappButton.addEventListener('click', function(e) {
@@ -899,17 +2201,184 @@
     >
         <!-- WhatsApp Logo Image -->
         <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            src="Whatsapp_Web_Card-removebg-preview.png"
             alt="WhatsApp"
             class="w-16 h-16 object-contain"
             loading="lazy"
         />
     </a>
 
-    <!-- Optional: Add a tooltip that appears on hover -->
-    <div class="whatsapp-fixed bg-black text-white px-3 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="bottom: 100px; right: 24px;">
-        Chat with us on WhatsApp
-    </div>
+
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="w-full bg-white py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-company mb-4">Contact Us</h2>
+                <p class="text-lg text-gray-600">Get in touch with SodaStation - We'd love to hear from you!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-gray-50 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-company mb-6">Get In Touch</h3>
+                        
+                        <!-- Phone -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="bg-company text-white p-3 rounded-full">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+91 9000341655</p>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="bg-company text-white p-3 rounded-full">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Location</h4>
+                                <p class="text-gray-600">Hyderabad, Telangana, India</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="bg-company text-white p-3 rounded-full">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">info@sodastation.in</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp CTA -->
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-6 mt-8">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-green-500 text-white p-3 rounded-full">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-800">Quick Response on WhatsApp</h4>
+                                    <p class="text-gray-600 text-sm mb-3">Get instant support and quick answers to your queries</p>
+                                    <a href="https://wa.me/919000341655" target="_blank" class="inline-flex items-center px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-lg hover:bg-green-600 transition-colors duration-200">
+                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                        </svg>
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-company mb-6">Send us a Message</h3>
+                    <form class="space-y-6">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-company focus:border-transparent transition-all duration-200" placeholder="Your full name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-company focus:border-transparent transition-all duration-200" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-company focus:border-transparent transition-all duration-200" placeholder="+91 9876543210">
+                        </div>
+
+                        <!-- Subject -->
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-company focus:border-transparent transition-all duration-200" required>
+                                <option value="">Select a subject</option>
+                                <option value="product-inquiry">Product Inquiry</option>
+                                <option value="franchise">Franchise Opportunity</option>
+                                <option value="customer-support">Customer Support</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-company focus:border-transparent transition-all duration-200" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div>
+                            <button type="submit" class="w-full bg-company text-white px-6 py-3 rounded-lg font-semibold hover:bg-company-light transition-colors duration-200 focus:ring-2 focus:ring-company focus:ring-offset-2">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Quick Contact Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                <!-- Business Hours -->
+                <div class="text-center p-6 bg-company text-white rounded-xl">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Business Hours</h4>
+                    <p class="text-white/90 text-sm">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                    <p class="text-white/90 text-sm">Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+
+                <!-- Customer Support -->
+                <div class="text-center p-6 bg-company text-white rounded-xl">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">24/7 Support</h4>
+                    <p class="text-white/90 text-sm">WhatsApp support available</p>
+                    <p class="text-white/90 text-sm">for urgent queries</p>
+                </div>
+
+                <!-- Franchise Inquiry -->
+                <div class="text-center p-6 bg-company text-white rounded-xl">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Franchise Opportunities</h4>
+                    <p class="text-white/90 text-sm">Expanding across Telangana</p>
+                    <p class="text-white/90 text-sm">Join our growing network</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="w-full bg-gray-50 py-20">
@@ -978,8 +2447,6 @@
                 <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                     <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
                         <h3 class="text-lg font-semibold text-gray-800">Can I become a SodaStation franchise owner?</h3>
-                        <svg class="faq-icon w-5 h-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
-                        <h3 class="text-lg font-semibold text-gray-800">Can I become a SodaStation franchise owner?</h3>
                         <svg class="faq-icon w-5 h-5 text-company transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
@@ -1036,8 +2503,22 @@
                     </div>
                 </div>
                 
-                <!-- Right Column - Navigation Links -->
+                <!-- Right Column - Navigation Links with FSSAI Logo -->
                 <div class="flex flex-col items-start md:items-end space-y-4">
+                    <!-- FSSAI Logo Section -->
+                    <div class="flex flex-col items-start md:items-end w-full mb-6">
+                        <div class="flex flex-col items-center">
+                            <img 
+                                src="FSSAI-LOGO.png" 
+                                alt="FSSAI Certified" 
+                                class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300 mb-1"
+                            />
+                            <p class="text-white/80 text-xxs font-medium tracking-wide" style="font-size: 10px;">
+                                13625034000190
+                            </p>
+                        </div>
+                    </div>
+                    
                     <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
                         <a href="#contact" class="text-white/80 hover:text-yellow-300 transition-colors text-sm font-medium">
                             CONTACT
