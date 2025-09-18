@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SodaStation - Relive the Taste of Your Childhood</title>
+    
+    <!-- Optimized Font Loading - Preload First -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=block" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
@@ -23,10 +29,19 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-        
+        /* Font is now loaded via <link> above for better performance */
         .staatliches {
             font-family: 'Staatliches', cursive;
+            font-display: block;
+        }
+        
+        /* Hide text until font loads to prevent flash */
+        .hero-text {
+            visibility: hidden;
+        }
+        
+        .hero-text.font-loaded {
+            visibility: visible;
         }
         
         @keyframes pop1 {
@@ -627,13 +642,70 @@
                 whatsappFloat 3.5s ease-in-out infinite;
         }
         
-        /* Enhanced positioning with smoother entrance */
+        /* Enhanced WhatsApp button with scroll-based visibility and animations */
         .whatsapp-fixed {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 9999;
-            animation: whatsappEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s both;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px) scale(0.5) rotate(180deg);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            /* Force initial state */
+            display: flex !important;
+        }
+        
+        /* Show WhatsApp button with entrance animation */
+        .whatsapp-fixed.visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) scale(1) rotate(0deg) !important;
+            animation: whatsappBounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        
+        /* Hide WhatsApp button with exit animation */
+        .whatsapp-fixed.hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(100px) scale(0.5) rotate(-180deg) !important;
+            transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+            animation: none;
+        }
+        
+        /* Bounce-in entrance animation */
+        @keyframes whatsappBounceIn {
+            0% {
+                transform: translateY(100px) scale(0.3) rotate(180deg);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-10px) scale(1.1) rotate(-10deg);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translateY(5px) scale(0.95) rotate(5deg);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translateY(-3px) scale(1.05) rotate(-2deg);
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(1px) scale(0.98) rotate(1deg);
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Add a subtle hover enhancement */
+        .whatsapp-fixed.visible:hover {
+            transform: translateY(-3px) scale(1.1) rotate(-5deg);
+            box-shadow: 
+                0 15px 45px rgba(37, 211, 102, 0.6),
+                0 8px 25px rgba(0, 0, 0, 0.2);
         }
         
         /* Entrance animation */
@@ -675,6 +747,54 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Mobile responsive adjustments with optimized animations */
+        @media (max-width: 768px) {
+            .whatsapp-fixed {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-fixed.visible {
+                transform: translateY(0) scale(0.9) rotate(0deg);
+            }
+            
+            .whatsapp-fixed.hidden {
+                transform: translateY(80px) scale(0.4) rotate(-90deg);
+            }
+            
+            /* Reduced animation intensity for mobile */
+            @keyframes whatsappBounceIn {
+                0% {
+                    transform: translateY(80px) scale(0.4) rotate(90deg);
+                    opacity: 0;
+                }
+                20% {
+                    transform: translateY(-5px) scale(1.0) rotate(-5deg);
+                    opacity: 0.8;
+                }
+                40% {
+                    transform: translateY(2px) scale(0.95) rotate(2deg);
+                    opacity: 0.9;
+                }
+                60% {
+                    transform: translateY(-1px) scale(1.0) rotate(-1deg);
+                    opacity: 1;
+                }
+                80% {
+                    transform: translateY(0px) scale(0.98) rotate(0deg);
+                }
+                100% {
+                    transform: translateY(0) scale(0.9) rotate(0deg);
+                    opacity: 1;
+                }
+            }
+            
+            .whatsapp-fixed.visible:hover {
+                transform: translateY(-2px) scale(0.95) rotate(-3deg);
+            }
         }
         
         .whatsapp-button:focus {
@@ -713,175 +833,9 @@
             }
         }
 
-        /* Statistics Counter Animation Styles - Simple Flow */
+        /* Statistics Counter Styles - Static (Animation Disabled) */
         .stats-counter {
-            transition: all 0.3s ease;
             display: inline-block;
-        }
-        
-        /* Gentle wave flow animation */
-        .stats-wave {
-            animation: gentleWave 2s ease-in-out;
-        }
-        
-        @keyframes gentleWave {
-            0% { 
-                transform: translateY(20px) scale(0.8); 
-                opacity: 0;
-            }
-            50% {
-                transform: translateY(-5px) scale(1.05);
-                opacity: 0.8;
-            }
-            100% { 
-                transform: translateY(0) scale(1); 
-                opacity: 1;
-            }
-        }
-        
-        /* Smooth slide in animation */
-        .stats-slide {
-            animation: smoothSlide 2.2s ease-out;
-        }
-        
-        @keyframes smoothSlide {
-            0% { 
-                transform: translateX(-30px) rotateY(45deg); 
-                opacity: 0;
-            }
-            60% {
-                transform: translateX(3px) rotateY(-5deg);
-                opacity: 0.9;
-            }
-            100% { 
-                transform: translateX(0) rotateY(0deg); 
-                opacity: 1;
-            }
-        }
-        
-        /* Gentle pulse flow */
-        .stats-pulse-flow {
-            animation: gentlePulseFlow 2.5s ease-in-out;
-        }
-        
-        @keyframes gentlePulseFlow {
-            0% { 
-                transform: scale(0.3); 
-                opacity: 0;
-            }
-            30% {
-                transform: scale(1.1);
-                opacity: 0.7;
-            }
-            60% {
-                transform: scale(0.95);
-                opacity: 0.9;
-            }
-            100% { 
-                transform: scale(1); 
-                opacity: 1;
-            }
-        }
-        
-        /* Floating flow animation */
-        .stats-float {
-            animation: floatingFlow 2.8s ease-in-out;
-        }
-        
-        @keyframes floatingFlow {
-            0% { 
-                transform: translateY(40px) rotateX(30deg); 
-                opacity: 0;
-            }
-            40% {
-                transform: translateY(-8px) rotateX(-3deg);
-                opacity: 0.8;
-            }
-            70% {
-                transform: translateY(2px) rotateX(1deg);
-                opacity: 0.95;
-            }
-            100% { 
-                transform: translateY(0) rotateX(0deg); 
-                opacity: 1;
-            }
-        }
-        
-        /* Circle flow effects - subtle */
-        .circle-wave {
-            animation: circleWave 2s ease-in-out;
-        }
-        
-        @keyframes circleWave {
-            0% { 
-                box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-                transform: scale(0.9);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-                transform: scale(1.02);
-            }
-            100% { 
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-                transform: scale(1);
-            }
-        }
-        
-        .circle-slide {
-            animation: circleSlide 2.2s ease-out;
-        }
-        
-        @keyframes circleSlide {
-            0% { 
-                box-shadow: 0 0 0 rgba(16, 33, 105, 0);
-                transform: scale(0.8) rotateY(20deg);
-            }
-            60% {
-                box-shadow: 0 0 15px rgba(16, 33, 105, 0.2);
-                transform: scale(1.03) rotateY(-2deg);
-            }
-            100% { 
-                box-shadow: 0 0 8px rgba(16, 33, 105, 0.1);
-                transform: scale(1) rotateY(0deg);
-            }
-        }
-        
-        .circle-pulse-flow {
-            animation: circlePulseFlow 2.5s ease-in-out;
-        }
-        
-        @keyframes circlePulseFlow {
-            0% { 
-                box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-                transform: scale(0.7);
-            }
-            40% {
-                box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-                transform: scale(1.05);
-            }
-            100% { 
-                box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-                transform: scale(1);
-            }
-        }
-        
-        .circle-float {
-            animation: circleFloat 2.8s ease-in-out;
-        }
-        
-        @keyframes circleFloat {
-            0% { 
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-                transform: translateY(10px) scale(0.85);
-            }
-            50% {
-                box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-                transform: translateY(-3px) scale(1.02);
-            }
-            100% { 
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                transform: translateY(0) scale(1);
-            }
         }
         
         /* Enhanced pattern animation for value cards */
@@ -994,7 +948,7 @@
         </div>
         <div class="w-full flex flex-col items-center m-0 p-0 py-12 relative z-10 px-4">
             <div class="relative w-full max-w-4xl mx-auto">
-                <h1 class="staatliches text-5xl md:text-7xl lg:text-8xl font-normal mb-6 text-white leading-tight uppercase relative z-10">
+                <h1 class="staatliches hero-text text-5xl md:text-7xl lg:text-8xl font-normal mb-6 text-white leading-tight uppercase relative z-10">
                     RELIVE THE TASTE OF YOUR CHILDHOOD<br />
                     ONE GOLI AT A TIME
                 </h1>
@@ -1863,49 +1817,13 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // Statistics Counter Animation with Simple Flow
+        // Statistics Counter Animation with Simple Flow - DISABLED
         function animateCounterFlow(element, target, suffix = '', duration = 2000, easingType = 'ease') {
-            // Simple smooth flowing animation
-            const startTime = performance.now();
-            const startValue = 0;
-            
-            function animate(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                // Different easing functions for flow
-                let easedProgress;
-                switch(easingType) {
-                    case 'wave':
-                        easedProgress = Math.sin(progress * Math.PI / 2);
-                        break;
-                    case 'slide':
-                        easedProgress = 1 - Math.pow(1 - progress, 3);
-                        break;
-                    case 'pulse':
-                        easedProgress = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                        break;
-                    case 'float':
-                        easedProgress = progress * progress * (3 - 2 * progress);
-                        break;
-                    default:
-                        easedProgress = progress;
-                }
-                
-                const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
-                element.textContent = currentValue + suffix;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    element.textContent = target + suffix;
-                }
-            }
-            
-            requestAnimationFrame(animate);
+            // Static display - no animation
+            element.textContent = target + suffix;
         }
 
-        // Setup Statistics Animation Observer with Simple Flow
+        // Setup Statistics Animation Observer - DISABLED
         function setupStatisticsAnimation() {
             const statisticsSection = document.getElementById('statistics-section');
             if (!statisticsSection) return;
@@ -1945,47 +1863,13 @@
                 }
             ];
 
-            let hasAnimated = false;
-
-            // Create intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        hasAnimated = true;
-                        console.log('🌊 Starting flowing statistics animations!');
-                        
-                        // Animate each counter with gentle flow effects and staggered timing
-                        counters.forEach((counter, index) => {
-                            const element = document.getElementById(counter.id);
-                            const circleElement = document.getElementById(counter.circleId);
-                            if (element && circleElement) {
-                                console.log(`${counter.name} for ${counter.id}`);
-                                setTimeout(() => {
-                                    // Start gentle circle animation
-                                    circleElement.classList.add(`circle-${counter.animationType}`);
-                                    
-                                    // Start text animation
-                                    element.classList.add(`stats-${counter.animationType}`);
-                                    
-                                    // Start counter animation with flow
-                                    const duration = 2000 + (index * 200); // Slightly longer for each
-                                    animateCounterFlow(element, counter.target, counter.suffix, duration, counter.animationType);
-                                    
-                                    // Clean up animations after completion
-                                    setTimeout(() => {
-                                        circleElement.classList.remove(`circle-${counter.animationType}`);
-                                        element.classList.remove(`stats-${counter.animationType}`);
-                                    }, duration + 500);
-                                }, index * 400); // 400ms delay for flowing sequence
-                            }
-                        });
-                    }
-                });
-            }, {
-                threshold: 0.5 // Trigger when 50% of the section is visible
+            // Set static values immediately - no animation
+            counters.forEach((counter) => {
+                const element = document.getElementById(counter.id);
+                if (element) {
+                    element.textContent = counter.target + counter.suffix;
+                }
             });
-
-            observer.observe(statisticsSection);
         }
 
         // Set up on window resize
@@ -1996,6 +1880,88 @@
                 // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, setting up train animation');
+            
+            // Font loading detection and text reveal
+            function checkFontLoaded() {
+                // Check if Staatliches font is loaded
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(function() {
+                        const heroText = document.querySelector('.hero-text');
+                        if (heroText) {
+                            heroText.classList.add('font-loaded');
+                        }
+                    });
+                } else {
+                    // Fallback for older browsers - show text after short delay
+                    setTimeout(function() {
+                        const heroText = document.querySelector('.hero-text');
+                        if (heroText) {
+                            heroText.classList.add('font-loaded');
+                        }
+                    }, 200);
+                }
+            }
+            
+            // Initialize font loading check immediately
+            checkFontLoaded();
+            
+            // WhatsApp Button Scroll Visibility Control
+            function initWhatsAppScrollBehavior() {
+                const whatsappButton = document.querySelector('.whatsapp-fixed');
+                const heroSection = document.getElementById('home');
+                
+                if (!whatsappButton || !heroSection) {
+                    console.log('WhatsApp button or hero section not found');
+                    return;
+                }
+                
+                console.log('WhatsApp scroll behavior initialized');
+                
+                // Initially hide the button
+                whatsappButton.classList.remove('visible');
+                whatsappButton.classList.add('hidden');
+                
+                function updateWhatsAppVisibility() {
+                    const heroRect = heroSection.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    
+                    // Check if we're still in the hero section
+                    // Hide button if hero section is visible (bottom edge is below 20% of viewport)
+                    const isInHeroSection = heroRect.bottom > (viewportHeight * 0.2);
+                    
+                    console.log('Hero bottom:', heroRect.bottom, 'Viewport 20%:', viewportHeight * 0.2, 'In hero:', isInHeroSection);
+                    
+                    if (isInHeroSection) {
+                        // Hide button with faster transition when entering hero
+                        whatsappButton.classList.remove('visible');
+                        whatsappButton.classList.add('hidden');
+                        console.log('WhatsApp button hidden');
+                    } else {
+                        // Show button with animation when leaving hero
+                        whatsappButton.classList.remove('hidden');
+                        whatsappButton.classList.add('visible');
+                        console.log('WhatsApp button visible with animation');
+                    }
+                }
+                
+                // Throttled scroll handler for performance
+                let scrollTimeout;
+                function handleScroll() {
+                    if (scrollTimeout) {
+                        clearTimeout(scrollTimeout);
+                    }
+                    scrollTimeout = setTimeout(updateWhatsAppVisibility, 10);
+                }
+                
+                // Add scroll listener
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                
+                // Initial check
+                setTimeout(updateWhatsAppVisibility, 100);
+            }
+            
+            // Initialize WhatsApp scroll behavior
+            initWhatsAppScrollBehavior();
             
             // Set up resize listener
             window.addEventListener('resize', handleResize);
@@ -2509,7 +2475,7 @@
                     <div class="flex flex-col items-start md:items-end w-full mb-6">
                         <div class="flex flex-col items-center">
                             <img 
-                                src="fssai-logo.png" 
+                                src="FSSAI-LOGO.png" 
                                 alt="FSSAI Certified" 
                                 class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300 mb-1"
                             />
@@ -2522,6 +2488,9 @@
                     <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
                         <a href="#contact" class="text-white/80 hover:text-yellow-300 transition-colors text-sm font-medium">
                             CONTACT
+                        </a>
+                        <a href="#faq" class="text-white/80 hover:text-yellow-300 transition-colors text-sm font-medium">
+                            FAQS
                         </a>
                         <a href="#terms" class="text-white/80 hover:text-yellow-300 transition-colors text-sm font-medium">
                             TERMS
@@ -2564,6 +2533,9 @@
                 <div class="flex space-x-6 text-sm">
                     <a href="#about" class="text-white/80 hover:text-yellow-300 transition-colors">
                         About Us
+                    </a>
+                    <a href="#faq" class="text-white/80 hover:text-yellow-300 transition-colors">
+                        FAQs
                     </a>
                     <a href="#franchise" class="text-white/80 hover:text-yellow-300 transition-colors">
                         Franchise
