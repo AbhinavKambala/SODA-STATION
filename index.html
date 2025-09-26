@@ -171,12 +171,40 @@
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
+            background: rgba(156, 163, 175, 0.75);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .mobile-menu.open {
             transform: translateY(0) !important;
             opacity: 1 !important;
             pointer-events: auto;
+        }
+        
+        /* Premium mobile menu item styling */
+        .mobile-menu a {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .mobile-menu a:hover::before {
+            left: 100%;
         }
 
         /* Hamburger animation */
@@ -435,6 +463,11 @@
             .mountains {
                 height: 40px;
                 bottom: 35%;
+            }
+            
+            /* Disable only the gradient animation on mobile, keep background visible */
+            .train-section {
+                animation: none !important;
             }
         }
         
@@ -903,7 +936,7 @@
 </head>
 <body class="font-sans min-h-screen text-gray-800 scroll-smooth w-full overflow-x-hidden">
     <!-- Navigation Header -->
-    <nav id="header" class="fixed left-0 right-0 top-0 z-20 bg-company text-white shadow-sm h-16 flex items-center px-6 md:px-12 justify-between transition-transform duration-300">
+    <nav id="header" class="fixed left-0 right-0 top-0 z-20 bg-company text-white h-16 flex items-center px-6 md:px-12 justify-between transition-transform duration-300">
         <a href="#home" class="text-2xl font-extrabold text-white tracking-tight hover:text-white">
             <span>SodaStation</span>
         </a>
@@ -924,11 +957,11 @@
             <span id="hamburger-line3" class="block w-7 h-1 bg-white rounded transition-all duration-300"></span>
         </button>
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-company shadow-lg flex flex-col space-y-4 text-base py-6 px-8 md:hidden z-30 mobile-menu transform -translate-y-full opacity-0 transition-all duration-300">
-            <a href="#features" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Features</a>
-            <a href="#about" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">About</a>
-            <a href="#contact" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">Contact</a>
-            <a href="#faq" class="text-white hover:text-company-light transition-colors py-2 px-4 rounded-lg hover:bg-white/10">FAQs</a>
+        <div id="mobile-menu" class="fixed top-16 left-0 w-full backdrop-blur-2xl bg-gray-400/75 shadow-2xl flex flex-col space-y-4 text-base py-8 px-6 md:hidden z-30 mobile-menu transform -translate-y-full opacity-0 transition-all duration-500 border-b border-white/20" style="backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);">
+            <a href="#features" class="bg-white/90 text-gray-900 hover:text-company transition-all duration-300 py-4 px-6 rounded-2xl hover:bg-white hover:shadow-md font-semibold backdrop-blur-sm border border-white/40 transform hover:scale-[1.02] active:scale-[0.98] text-lg tracking-wide shadow-sm">Features</a>
+            <a href="#about" class="bg-white/90 text-gray-900 hover:text-company transition-all duration-300 py-4 px-6 rounded-2xl hover:bg-white hover:shadow-md font-semibold backdrop-blur-sm border border-white/40 transform hover:scale-[1.02] active:scale-[0.98] text-lg tracking-wide shadow-sm">About</a>
+            <a href="#contact" class="bg-white/90 text-gray-900 hover:text-company transition-all duration-300 py-4 px-6 rounded-2xl hover:bg-white hover:shadow-md font-semibold backdrop-blur-sm border border-white/40 transform hover:scale-[1.02] active:scale-[0.98] text-lg tracking-wide shadow-sm">Contact</a>
+            <a href="#faq" class="bg-white/90 text-gray-900 hover:text-company transition-all duration-300 py-4 px-6 rounded-2xl hover:bg-white hover:shadow-md font-semibold backdrop-blur-sm border border-white/40 transform hover:scale-[1.02] active:scale-[0.98] text-lg tracking-wide shadow-sm">FAQs</a>
         </div>
     </nav>
 
@@ -2475,7 +2508,7 @@
                     <div class="flex flex-col items-start md:items-end w-full mb-6">
                         <div class="flex flex-col items-center">
                             <img 
-                                src="fssai-logo.png" 
+                                src="FSSAI-LOGO.png" 
                                 alt="FSSAI Certified" 
                                 class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300 mb-1"
                             />
