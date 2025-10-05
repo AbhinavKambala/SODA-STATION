@@ -1,0 +1,37 @@
+{
+  "name": "SodaStation",
+  "short_name": "SodaStation",
+  "description": "Relive the taste of your childhood, one goli at a time",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#102169",
+  "theme_color": "#102169",
+  "icon": "SODA STATION STANDARD LOGO.png",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "SODA STATION STANDARD LOGO.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "SODA STATION STANDARD LOGO.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "SODA STATION STANDARD LOGO.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
