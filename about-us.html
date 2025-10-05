@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - SodaStation | Relive the Taste of Your Childhood</title>
     
+    <!-- Favicon and Home Screen Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="SODA STATION STANDARD LOGO.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#102169">
+    
     <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,13 +165,18 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Header scroll behavior */
+        .header-hidden {
+            transform: translateY(-100%);
+        }
     </style>
 </head>
 <body class="font-sans min-h-screen text-gray-800 scroll-smooth w-full overflow-x-hidden">
     <!-- Navigation Header -->
     <nav id="header" class="fixed left-0 right-0 top-0 z-20 bg-company text-white h-16 flex items-center px-6 md:px-12 justify-between transition-transform duration-300">
         <a href="index.html#home" class="flex items-center">
-            <img src="SODA STATION LOGO.png" alt="SodaStation" class="h-14 w-auto object-contain hover:scale-105 transition-transform duration-300">
+            <img src="SODA STATION LOGO.png" alt="SodaStation" class="h-14 w-14 rounded-full object-cover hover:scale-105 transition-transform duration-300">
         </a>
         <div class="space-x-8 text-base hidden md:flex items-center">
             <a href="index.html#home" class="text-white hover:text-company-light transition">Home</a>
@@ -603,6 +616,30 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const header = document.getElementById('header');
+
+        // Header scroll behavior
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateHeader() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 40) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('open');
