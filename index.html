@@ -9,9 +9,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="SODA STATION STANDARD LOGO.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#102169">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="SodaStation">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
     
     <!-- Optimized Font Loading - Preload First -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +45,17 @@
         .staatliches {
             font-family: 'Staatliches', cursive;
             font-display: block;
+        }
+        
+        /* Force transparent background for favicons */
+        link[rel*="icon"], link[rel*="apple-touch-icon"] {
+            background: transparent !important;
+        }
+        
+        /* Force circular display for favicons */
+        link[rel*="icon"] img, link[rel*="apple-touch-icon"] img {
+            border-radius: 50% !important;
+            background: transparent !important;
         }
         
         /* Hide text until font loads to prevent flash */
